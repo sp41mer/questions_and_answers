@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>Проверь себя</title>
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo center">Тестовое задание</a>
+    </div>
+</nav>
+<div class="container">
+    <form action="/ans_q/result" method="post">
+        <div class = "row" align="center">
+            {% for question in question_data %}
+            <div class="col m6">
+                <div class = "question">
+                    <div class = "question__title">
+                        {{ question.question }}
+                    </div>
+                    <div class = "question__content">
+                        <input class = "question__content__text" type="text" name="answers_{{ question.id }}" placeholder="{{ question.hint }}" />
+                    </div>
+                </div>
+            </div>
+            {% endfor  %}
+        </div>
+        <div class = "row" align="center">
+            <input type = "submit" class = "waves-effect waves-light btn" value="Отправить ответы">
+        </div>
+    </form>
+</div>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+</body>
+</html>

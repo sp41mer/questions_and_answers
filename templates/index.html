@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>Проверь себя</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo center">Тестовое задание</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class = "row" align="center">
+            <div class = "main_menu">
+                <a href = "/test_q/quiz" class="main_menu__link waves-effect waves-light btn">
+                    <i class="material-icons left">done</i>Тестовые вопросы
+                </a>
+                <a href = "/ans_q/quiz" class="main_menu__link waves-effect waves-light btn">
+                    <i class="material-icons left">mode_edit</i>Текстовые вопросы
+                </a>
+                <a class="main_menu__link waves-effect waves-light btn" href = "/edit">
+                    <i class="material-icons left">view_list</i>Изменить вопросы
+                </a>
+{#                <a class="main_menu__link waves-effect waves-light btn">#}
+{#                    <i class="material-icons left">cloud</i>Настройки доступа#}
+{#                </a>#}
+            </div>
+        </div>
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+</body>
+</html>

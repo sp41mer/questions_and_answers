@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>Проверь себя</title>
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Тестовое задание</a>
+    </div>
+</nav>
+<div class="container">
+    <form action="/test_q/result" method="post">
+        <div class = "row" align="center">
+            {% for question in question_data %}
+            <div class="col m6">
+                <div class = "question">
+                    <div class = "question__title">
+                        {{ question.question }}
+                    </div>
+                    <div class = "question__content">
+                        <div class = "question__content__variant col s6 ">
+                            <input name="answers_{{ question.id }}" type="radio" id="q1_{{ question.id }}" value="{{ question.answer_one }}"/>
+                            <label for="q1_{{ question.id }}">{{ question.answer_one }}</label>
+                        </div>
+                        <div class = "question__content__variant col s6 ">
+                            <input name="answers_{{ question.id }}" type="radio" id="q2_{{ question.id }}" value="{{ question.answer_two }}" />
+                            <label for="q2_{{ question.id }}">{{ question.answer_two }}</label>
+                        </div>
+                        <div class = "question__content__variant col s6 ">
+                            <input name="answers_{{ question.id }}" type="radio" id="q3_{{ question.id }}" value="{{ question.answer_three }}" />
+                            <label for="q3_{{ question.id }}">{{ question.answer_three }}</label>
+                        </div>
+                        <div class = "question__content__variant col s6 ">
+                            <input name="answers_{{ question.id }}" type="radio" id="q4_{{ question.id }}" value="{{ question.answer_four }}"/>
+                            <label for="q4_{{ question.id }}">{{ question.answer_four }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class = "row" align="center">
+            <input type = "submit" class = "waves-effect waves-light btn" value="Отправить ответы">
+        </div>
+    </form>
+</div>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>Проверь себя</title>
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Тестовое задание</a>
+    </div>
+</nav>
+<div class="container">
+    <div class = "row question_create">
+        <form action="{{ action }}" method="post">
+            <input type = "hidden" name = "id" value = "0">
+            <div class = "row" align="center">
+                <input type = "text" name = "title" placeholder="Введите текст вопроса"
+                       {% if question_data is defined %}
+                            value = "{{ question_data.question }}"
+                       {% endif %}>
+            </div>
+            <div class = "row" align="center">
+                <input type = "text" name = "correct" placeholder="Введите правильный ответ"
+                       {% if question_data is defined %}
+                            value = "{{ question_data.correct_answer }}"
+                       {% endif %}>
+            </div>
+            <div class = "row" align="center">
+                <input type = "text" name = "hint" placeholder="Введите подсказку"
+                        {% if question_data is defined %}
+                            value = "{{ question_data.hint }}"
+                        {% endif %}>
+            </div>
+            <div class = "row" align="center">
+                <input type = "submit" class = "waves-effect waves-light btn" value="Сохранить вопрос">
+            </div>
+        </form>
+    </div>
+</div>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+</body>
+</html>

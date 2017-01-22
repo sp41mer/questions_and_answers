@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, redirect
+from flask_wtf.csrf import CSRFProtect
 from flask import g
 from peewee import *
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "lol_kek"
+csrf = CSRFProtect(app)
 
 database_sqlite = SqliteDatabase("try3.db")
 

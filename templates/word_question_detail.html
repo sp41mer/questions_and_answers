@@ -2,6 +2,7 @@
 {% block content %}
     <div class = "row question_create">
         <form action="{{ action }}" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
             <input type = "hidden" name = "id" value = "0">
             <div class = "row" align="center">
                 <input type = "text" name = "title" placeholder="Введите текст вопроса"

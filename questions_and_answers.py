@@ -158,7 +158,7 @@ def create_ans_qustion():
         with database_sqlite.transaction():
             WordQuestion.create(
                 question=question,
-                correct_answer=correct_answer,
+                correct_answer=correct_answer.lower(),
                 hint=hint
             )
         return redirect('/edit')
@@ -188,7 +188,7 @@ def edit_ans_qustion(question):
         with database_sqlite.transaction():
             question = WordQuestion.select().where(WordQuestion.id == int(question))[0]
             question.question = question_title
-            question.correct_answer = correct_answer
+            question.correct_answer = correct_answer.lower()
             question.hint = hint
             question.save()
         return redirect('/edit')
@@ -227,7 +227,7 @@ def count_ans_result():
     for id, answer in list_answers.items():
         correct_answer = WordQuestion.select(WordQuestion.correct_answer).where(
             WordQuestion.id == id).get().correct_answer
-        if answer == correct_answer: correct_answers_counter += 1
+        if answer.lower() == correct_answer: correct_answers_counter += 1
     result = float(correct_answers_counter) / len(list_answers) * 100
     mark = get_mark(result)
     return render_template('result.html', mark=mark)

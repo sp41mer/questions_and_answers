@@ -255,4 +255,4 @@ def edit_page():
                            word_questions=word_questions)
 if __name__ == '__main__':
     initialize()
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port='5000')

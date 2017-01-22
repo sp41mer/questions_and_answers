@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import random
 from flask import Flask, render_template, request, redirect
 from flask_wtf.csrf import CSRFProtect
 from flask import g
@@ -207,7 +208,15 @@ def create_ans_quiz():
 
 @app.route('/test_q/quiz')
 def create_test_quiz():
-    question_data = TestQuestion.select()
+    question_data = []
+    for question in TestQuestion.select():
+        answers = [question.correct_answer,question.answer_one,question.answer_two,question.answer_three]
+        random.shuffle(answers)
+        question_data.append({
+            'question': question.question,
+            'id': question.id,
+            'variants': answers
+        })
     return render_template('test.html', question_data=question_data)
 
 

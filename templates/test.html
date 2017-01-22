@@ -10,22 +10,12 @@
                         {{ question.question }}
                     </div>
                     <div class = "question__content">
+                        {% for variant in question.variants %}
                         <div class = "question__content__variant col s6 ">
-                            <input name="answers_{{ question.id }}" type="radio" id="q1_{{ question.id }}" value="{{ question.answer_one }}"/>
-                            <label for="q1_{{ question.id }}">{{ question.answer_one }}</label>
+                            <input name="answers_{{ question.id }}" type="radio" id="q{{ loop.index }}_{{ question.id }}" value="{{ variant }}"/>
+                            <label for="q{{ loop.index }}_{{ question.id }}">{{ variant }}</label>
                         </div>
-                        <div class = "question__content__variant col s6 ">
-                            <input name="answers_{{ question.id }}" type="radio" id="q2_{{ question.id }}" value="{{ question.answer_two }}" />
-                            <label for="q2_{{ question.id }}">{{ question.answer_two }}</label>
-                        </div>
-                        <div class = "question__content__variant col s6 ">
-                            <input name="answers_{{ question.id }}" type="radio" id="q3_{{ question.id }}" value="{{ question.answer_three }}" />
-                            <label for="q3_{{ question.id }}">{{ question.answer_three }}</label>
-                        </div>
-                        <div class = "question__content__variant col s6 ">
-                            <input name="answers_{{ question.id }}" type="radio" id="q4_{{ question.id }}" value="{{ question.answer_four }}"/>
-                            <label for="q4_{{ question.id }}">{{ question.answer_four }}</label>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
